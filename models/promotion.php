@@ -39,8 +39,8 @@ Class Promotion{
     static public function showCurrentPromotion(){
         $stmt = Connection::connect()->prepare("SELECT id_promocion, nombre, fecha_inicio as inicio, fecha_fin as fin, enlace, estado 
         FROM promociones_vp
-        WHERE STR_TO_DATE(fecha_inicio, '%d-%m-%Y') <= CURDATE()
-        AND STR_TO_DATE(fecha_fin, '%d-%m-%Y') >= CURDATE() AND estado = 1;");
+        WHERE STR_TO_DATE(fecha_inicio, '%Y-%m-%d') <= CURDATE()
+        AND STR_TO_DATE(fecha_fin, '%Y-%m-%d') >= CURDATE();");
         $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_CLASS);
         $stmt = null;
@@ -48,7 +48,7 @@ Class Promotion{
     }
 
     static public function showPromotionRewards($id){
-        $stmt = Connection::connect()->prepare("SELECT nombre, puntos 
+        $stmt = Connection::connect()->prepare("SELECT id_premios, nombre, puntos 
         FROM premios_vp 
         WHERE id_promocion = $id;");
         $stmt->execute();
