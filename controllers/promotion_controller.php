@@ -24,15 +24,29 @@ Class PromotionController{
         return;
     }
 
-    public function showPromotionRewards($id){
-        $prom = Promotion::showPromotionRewards($id);
+    public function addPromotion($data){
+        $prom = Promotion::addPromotion($data);
         $json = array($prom);
         echo json_encode($json,true);
         return;
     }
 
-    public function addPromotion($data){
-        $prom = Promotion::addPromotion($data);
+    public function editPromotion($data){
+        $prom = Promotion::editPromotion($data);
+        $json = array($prom);
+        echo json_encode($json,true);
+        return;
+    }
+
+    public function deletePromotion($id){
+        $prom = Promotion::deletePromotion($id);
+        $json = array($prom);
+        echo json_encode($json,true);
+        return;
+    }
+
+    public function updatePromStatus($data){
+        $prom = Promotion::updatePromStatus($data);
         $json = array($prom);
         echo json_encode($json,true);
         return;
