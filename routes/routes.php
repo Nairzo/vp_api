@@ -1,5 +1,10 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Credentials: true");
+header("Content-type:application/json;charset=utf-8"); 
+header("Access-Control-Allow-Methods: *");
+
 $arrayRoutes=explode("/", $_SERVER['REQUEST_URI']);
 
 switch(array_filter($arrayRoutes)[2]){
