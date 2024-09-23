@@ -120,6 +120,14 @@ switch(array_filter($arrayRoutes)[2]){
                     }
                     break;
                 }
+                case 'byname':{
+                    if($_SERVER['REQUEST_METHOD']=='GET'){
+                        $id = filter_input(INPUT_GET, 'id_promocion', FILTER_VALIDATE_INT);
+                        $nombre = filter_input(INPUT_GET, 'name');
+                        $par->paticipantsByPromotionAndName($id, $nombre);
+                    }
+                    break;
+                }
                 case 'month':{
                     if($_SERVER['REQUEST_METHOD']=='GET'){
                         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -132,6 +140,23 @@ switch(array_filter($arrayRoutes)[2]){
             }
         }
         break;
+    }
+    case 'catalog':{
+        $cat = new CatalogController();
+        if(isset($_SERVER['REQUEST_METHOD'])){
+            switch(array_filter($arrayRoutes)[3]){
+                case 'index':{
+                    $cat->index();
+                    break;
+                }
+                case 'all':{
+                    if($_SERVER['REQUEST_METHOD']=='GET'){
+                        $cat->allCatalog();
+                    }
+                    break;
+                }
+            }
+        }
     }
     default:{
         $json= array(
