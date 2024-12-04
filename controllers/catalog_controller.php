@@ -9,8 +9,8 @@ Class CatalogController{
         echo json_encode($json,true);
         return;
     }
-    public function allCatalog(){
-        $par = Catalog::allCatalog();
+    public function allCatalog($nombre){
+        $par = Catalog::allCatalog($nombre);
         $json = array($par);
         echo json_encode($json,true);
         return;

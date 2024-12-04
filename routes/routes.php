@@ -151,12 +151,14 @@ switch(array_filter($arrayRoutes)[2]){
                 }
                 case 'all':{
                     if($_SERVER['REQUEST_METHOD']=='GET'){
-                        $cat->allCatalog();
+                        $nombre = filter_input(INPUT_GET, 'name');
+                        $cat->allCatalog($nombre);
                     }
                     break;
                 }
             }
         }
+        break;
     }
     default:{
         $json= array(
